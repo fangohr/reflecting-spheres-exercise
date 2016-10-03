@@ -11,7 +11,7 @@ void draw(double pos, char sym) {
   std::cout << sym << std::endl;
 }
 
-void move(double particlePosition, double particleSpeed) {
+void move(double &particlePosition, double &particleSpeed) {
   particlePosition += particleSpeed;
   if (particlePosition >= maxColumn) {
     particlePosition = maxColumn;
