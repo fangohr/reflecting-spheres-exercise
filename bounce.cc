@@ -1,5 +1,3 @@
-// N.B. This program contains a bug, on purpose.
-
 #include <iostream>
 
 int main() {
