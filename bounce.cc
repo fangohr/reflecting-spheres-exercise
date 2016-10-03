@@ -1,10 +1,11 @@
 #include <iostream>
 
-move() {
+draw() {
   for (int i = 0; i < particlePosition; i++) {
     std::cout << " ";
   }
 }
+
 
 
 int main() {
