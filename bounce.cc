@@ -3,12 +3,45 @@
 const int minColumn = 0;
 const int maxColumn = 80;
 
+void draw(const double pos, const char sym);
+void move(double &particlePosition, double &particleSpeed);
+void clear_screen(void);
+void print_screen(void);
+void draw(double const particlePosition, char const particleSymbol);
+char screen[maxColumn];
+
+int main() {
+  const char particleSymbol = 'x';
+  double particlePosition = minColumn;
+  double particleSpeed = 6.3;
+  int timeStep = 0;
+  const int stopTime = 60;
+  
+  while (timeStep < stopTime) {
+    clear_screen();
+    draw(particlePosition, particleSymbol);
+    move(particlePosition, particleSpeed);
+    print_screen();
+    timeStep++;
+  }
+}
+
 
 void draw(const double pos, const char sym) {
-  for (int i = 0; i < pos; i++) {
-    std::cout << " ";
+  screen[static_cast<int>(pos)] = sym;
+}
+
+void print_screen(void) {
+  for (int i = 0; i < maxColumn; i++) {
+    std::cout << screen[i];
   }
-  std::cout << sym << std::endl;
+  std::cout << std::endl;
+}
+
+void clear_screen(void) {
+  for (int i = 0; i < maxColumn; i++) {
+    screen[i] = ' ';
+  }
 }
 
 void move(double &particlePosition, double &particleSpeed) {
@@ -22,16 +55,3 @@ void move(double &particlePosition, double &particleSpeed) {
   }    
 }
 
-int main() {
-  const char particleSymbol = 'x';
-  double particlePosition = minColumn;
-  double particleSpeed = 6.3;
-  int timeStep = 0;
-  const int stopTime = 60;
-  
-  while (timeStep < stopTime) {
-    draw(particlePosition, particleSymbol);
-    move(particlePosition, particleSpeed);
-    timeStep++;
-  }
-}
