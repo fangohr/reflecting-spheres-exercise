@@ -1,13 +1,23 @@
 #include <iostream>
 
-draw() {
+
+int minColumn = 0;
+int maxColumn = 80;
+char particleSymbol = 'x';
+double particlePosition = minColumn;
+double particleSpeed = 6.3;
+int timeStep = 0;
+int stopTime = 60;
+
+
+void draw() {
   for (int i = 0; i < particlePosition; i++) {
     std::cout << " ";
   }
   std::cout << particleSymbol << std::endl;
 }
 
-move() {
+void move() {
   particlePosition += particleSpeed;
   if (particlePosition >= maxColumn) {
     particlePosition = maxColumn;
@@ -19,17 +29,9 @@ move() {
 }
 
 int main() {
-
-  int minColumn = 0;
-  int maxColumn = 80;
-  char particleSymbol = 'x';
-  double particlePosition = minColumn;
-  double particleSpeed = 6.3;
-  int timeStep = 0;
-  int stopTime = 60;
   
   while (timeStep < stopTime) {
-    draw()
+    draw();
     move();
     timeStep++;
   }
