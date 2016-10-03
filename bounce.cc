@@ -11,16 +11,22 @@ void draw(double const particlePosition, char const particleSymbol);
 char screen[maxColumn];
 
 int main() {
+  int timeStep = 0;
+  const int stopTime = 60;
   const char particleSymbol = 'x';
   double particlePosition = minColumn;
   double particleSpeed = 6.3;
-  int timeStep = 0;
-  const int stopTime = 60;
-  
+
+  const char particleSymbol2 = '*';
+  double particlePosition2 = maxColumn-1;
+  double particleSpeed2 = -5.0;
+
   while (timeStep < stopTime) {
     clear_screen();
     draw(particlePosition, particleSymbol);
+    draw(particlePosition2, particleSymbol2);
     move(particlePosition, particleSpeed);
+    move(particlePosition2, particleSpeed2);
     print_screen();
     timeStep++;
   }

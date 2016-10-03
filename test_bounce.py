@@ -23,6 +23,16 @@ def test_output_ignore_whitespace():
     assert status == 0
 
 
+    
+def test_output_2_particles():
+    reference_output = open('bounce_reference_output-2.txt', 'tr').readlines()
+    status, output = subprocess.getstatusoutput('./bounce > output.txt')
+    for ref, cur in zip(reference_output, output.splitlines()):
+        assert ref.index('x') == cur.index('x')
+        assert ref.index('*') == cur.index('*')
+        
+    assert status == 0
+
 
 
     
