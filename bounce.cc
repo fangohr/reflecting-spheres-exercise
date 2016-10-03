@@ -1,5 +1,6 @@
 #include <iostream>
 
+const int nParticles 2
 const int minColumn = 0;
 const int maxColumn = 80;
 
@@ -10,23 +11,21 @@ void print_screen(void);
 void draw(double const particlePosition, char const particleSymbol);
 char screen[maxColumn];
 
+
 int main() {
   int timeStep = 0;
   const int stopTime = 60;
-  const char particleSymbol = 'x';
-  double particlePosition = minColumn;
-  double particleSpeed = 6.3;
-
-  const char particleSymbol2 = '*';
-  double particlePosition2 = maxColumn-1;
-  double particleSpeed2 = -5.0;
+  double particlePositions[] = {minColumn, maxColumn-1};
+  double particleSpeeds[] = {6.3, -5.0};
+  const char particleSymbols[] = {'x', '*'};
 
   while (timeStep < stopTime) {
     clear_screen();
-    draw(particlePosition, particleSymbol);
-    draw(particlePosition2, particleSymbol2);
-    move(particlePosition, particleSpeed);
-    move(particlePosition2, particleSpeed2);
+    for (int i = 0; i < nParticles; i++) {
+      draw(particlePositions[i], particleSymbols[i]);
+      move(particlePositions[i], particleSpeeds[i]);
+    }
+    
     print_screen();
     timeStep++;
   }
@@ -34,9 +33,7 @@ int main() {
 
 
 void draw(const double pos, const char sym) {
-  // screen[static_cast<int>(pos)] = sym;
-  screen[(int)pos] = sym; 
-  // screen[pos] = sym;
+  screen[static_cast<int>(pos)] = sym;
   
 }
 
