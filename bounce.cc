@@ -3,7 +3,6 @@
 const int minColumn = 0;
 const int maxColumn = 80;
 
-void draw(const double pos, const char sym);
 void move(double &particlePosition, double &particleSpeed);
 void clear_screen(void);
 void print_screen(void);
