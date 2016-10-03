@@ -8,11 +8,10 @@ int main() {
   int minColumn = 0;
   int maxColumn = 80;
   int timeStep = 0;
-  int startTime = 0;
   int stopTime = 60;
   
   while (timeStep < stopTime) {
-    for (int i = startTime; i < particlePosition; i++) {
+    for (int i = minColumn; i < particlePosition; i++) {
       std::cout << " ";
     }
     std::cout << particleSymbol << std::endl;
