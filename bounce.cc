@@ -4,7 +4,7 @@ const int minColumn = 0;
 const int maxColumn = 80;
 
 
-void draw(double pos, char sym) {
+void draw(const double pos, const char sym) {
   for (int i = 0; i < pos; i++) {
     std::cout << " ";
   }
@@ -23,11 +23,11 @@ void move(double &particlePosition, double &particleSpeed) {
 }
 
 int main() {
-  char particleSymbol = 'x';
+  const char particleSymbol = 'x';
   double particlePosition = minColumn;
   double particleSpeed = 6.3;
   int timeStep = 0;
-  int stopTime = 60;
+  const int stopTime = 60;
   
   while (timeStep < stopTime) {
     draw(particlePosition, particleSymbol);
