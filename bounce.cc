@@ -1,5 +1,8 @@
 #include <iostream>
 
+const int minColumn = 0;
+const int maxColumn = 80;
+
 
 void draw(double pos, char sym) {
   for (int i = 0; i < pos; i++) {
@@ -8,7 +11,7 @@ void draw(double pos, char sym) {
   std::cout << sym << std::endl;
 }
 
-void move(double &particlePosition, double &particleSpeed, int maxColumn, int minColumn) {
+void move(double &particlePosition, double &particleSpeed) {
   particlePosition += particleSpeed;
   if (particlePosition >= maxColumn) {
     particlePosition = maxColumn;
@@ -20,8 +23,6 @@ void move(double &particlePosition, double &particleSpeed, int maxColumn, int mi
 }
 
 int main() {
-  int minColumn = 0;
-  int maxColumn = 80;
   char particleSymbol = 'x';
   double particlePosition = minColumn;
   double particleSpeed = 6.3;
@@ -30,7 +31,7 @@ int main() {
   
   while (timeStep < stopTime) {
     draw(particlePosition, particleSymbol);
-    move(particlePosition, particleSpeed, maxColumn, minColumn);
+    move(particlePosition, particleSpeed);
     timeStep++;
   }
 }
