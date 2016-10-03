@@ -28,7 +28,10 @@ int main() {
 
 
 void draw(const double pos, const char sym) {
-  screen[static_cast<int>(pos)] = sym;
+  // screen[static_cast<int>(pos)] = sym;
+  screen[(int)pos] = sym; 
+  // screen[pos] = sym;
+  
 }
 
 void print_screen(void) {
