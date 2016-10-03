@@ -4,11 +4,9 @@ const int minColumn = 0;
 const int maxColumn = 80;
 
 void move(double &particlePosition, double &particleSpeed);
-void clear_screen(void);
-void print_screen(void);
-void draw(double const particlePosition, char const particleSymbol);
-char screen[maxColumn];
-
+void clear_screen(char screen[]);
+void print_screen(char screen[]);
+void draw(char screen[], double const particlePosition, char const particleSymbol);
 
 int main() {
   int timeStep = 0;
@@ -19,32 +17,34 @@ int main() {
   double particleSpeeds[nParticles] = {6.3, -5.0};
   const char particleSymbols[nParticles] = {'x', '*'};
 
+  char screen[maxColumn];
+
   while (timeStep < stopTime) {
-    clear_screen();
+    clear_screen(screen);
     for (int i = 0; i < nParticles; i++) {
-      draw(particlePositions[i], particleSymbols[i]);
+      draw(screen, particlePositions[i], particleSymbols[i]);
       move(particlePositions[i], particleSpeeds[i]);
     }
     
-    print_screen();
+    print_screen(screen);
     timeStep++;
   }
 }
 
 
-void draw(const double pos, const char sym) {
+void draw(char screen[], const double pos, const char sym) {
   screen[static_cast<int>(pos)] = sym;
   
 }
 
-void print_screen(void) {
+void print_screen(char screen[]) {
   for (int i = 0; i < maxColumn; i++) {
     std::cout << screen[i];
   }
   std::cout << std::endl;
 }
 
-void clear_screen(void) {
+void clear_screen(char screen[]) {
   for (int i = 0; i < maxColumn; i++) {
     screen[i] = ' ';
   }
