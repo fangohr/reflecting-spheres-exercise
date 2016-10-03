@@ -3,3 +3,6 @@ bounce: bounce.cc
 
 clean:
 	rm -f bounce bounce.o
+
+test:
+	py.test -v 
