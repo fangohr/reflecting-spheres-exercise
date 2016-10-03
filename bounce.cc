@@ -11,7 +11,7 @@ int main() {
   int stopTime = 60;
   
   while (timeStep < stopTime) {
-    for (int i = minColumn; i < particlePosition; i++) {
+    for (int i = 0; i < particlePosition; i++) {
       std::cout << " ";
     }
     std::cout << particleSymbol << std::endl;
