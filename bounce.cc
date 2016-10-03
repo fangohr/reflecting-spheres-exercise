@@ -2,11 +2,11 @@
 
 int main() {
 
-  char particleSymbol = 'x';
-  double particlePosition = 0;
-  double particleSpeed = 6.3;
   int minColumn = 0;
   int maxColumn = 80;
+  char particleSymbol = 'x';
+  double particlePosition = minColumn;
+  double particleSpeed = 6.3;
   int timeStep = 0;
   int stopTime = 60;
   
