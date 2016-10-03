@@ -1,5 +1,12 @@
 #include <iostream>
 
+move() {
+  for (int i = 0; i < particlePosition; i++) {
+    std::cout << " ";
+  }
+}
+
+
 int main() {
 
   int minColumn = 0;
@@ -11,9 +18,7 @@ int main() {
   int stopTime = 60;
   
   while (timeStep < stopTime) {
-    for (int i = 0; i < particlePosition; i++) {
-      std::cout << " ";
-    }
+    move();
     std::cout << particleSymbol << std::endl;
     particlePosition += particleSpeed;
     if (particlePosition >= maxColumn) {
