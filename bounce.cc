@@ -4,9 +4,19 @@ draw() {
   for (int i = 0; i < particlePosition; i++) {
     std::cout << " ";
   }
+  std::cout << particleSymbol << std::endl;
 }
 
-
+move() {
+  particlePosition += particleSpeed;
+  if (particlePosition >= maxColumn) {
+    particlePosition = maxColumn;
+    particleSpeed = -particleSpeed;
+  } else if (particlePosition < minColumn) {
+    particlePosition = minColumn;
+    particleSpeed = -particleSpeed;
+  }    
+}
 
 int main() {
 
@@ -19,16 +29,8 @@ int main() {
   int stopTime = 60;
   
   while (timeStep < stopTime) {
+    draw()
     move();
-    std::cout << particleSymbol << std::endl;
-    particlePosition += particleSpeed;
-    if (particlePosition >= maxColumn) {
-      particlePosition = maxColumn;
-      particleSpeed = -particleSpeed;
-    } else if (particlePosition < minColumn) {
-      particlePosition = minColumn;
-      particleSpeed = -particleSpeed;
-    }    
     timeStep++;
   }
 }
