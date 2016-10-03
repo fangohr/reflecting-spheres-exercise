@@ -1,2 +1,5 @@
 a.out
 bounce
+output.txt
+.cache
+__pycache__
