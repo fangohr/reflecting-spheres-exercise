@@ -5,6 +5,7 @@ int main() {
   char particleSymbol = 'x';
   double particlePosition = 0;
   double particleSpeed = 6.3;
+  int minColumn = 0;
   int maxColumn = 80;
   int timeStep = 0;
   int startTime = 0;
@@ -19,8 +20,8 @@ int main() {
     if (particlePosition >= maxColumn) {
       particlePosition = maxColumn;
       particleSpeed = -particleSpeed;
-    } else if (particlePosition < 0) {
-      particlePosition = 0;
+    } else if (particlePosition < minColumn) {
+      particlePosition = minColumn;
       particleSpeed = -particleSpeed;
     }    
     timeStep++;
