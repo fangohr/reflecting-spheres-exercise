@@ -1,6 +1,5 @@
 #include <iostream>
 
-const int nParticles 2
 const int minColumn = 0;
 const int maxColumn = 80;
 
@@ -15,9 +14,11 @@ char screen[maxColumn];
 int main() {
   int timeStep = 0;
   const int stopTime = 60;
-  double particlePositions[] = {minColumn, maxColumn-1};
-  double particleSpeeds[] = {6.3, -5.0};
-  const char particleSymbols[] = {'x', '*'};
+
+  const int nParticles = 2;
+  double particlePositions[nParticles] = {minColumn, maxColumn-1};
+  double particleSpeeds[nParticles] = {6.3, -5.0};
+  const char particleSymbols[nParticles] = {'x', '*'};
 
   while (timeStep < stopTime) {
     clear_screen();
