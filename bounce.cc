@@ -7,7 +7,6 @@ const int screenSize = maxColumn + 1;   // buffer for the screen
 void clear_screen(char * const screen);
 void print_screen(char const * const screen);
 void draw(char * const screen, struct Particle const * const particle);
-void initialize(Particle *const particle, char const symbol, int const position, double const speed);
 
 struct Particle {
   char symbol;
@@ -24,6 +23,18 @@ struct Particle {
     }    
   }
 
+
+  void initialize(char const symbol, int const position, double const speed)
+  {
+    this->symbol = symbol;
+    this->position = position;
+    this->speed = speed;
+
+  }
+
+
+  
+
 };
 
 int main() {
@@ -32,8 +43,8 @@ int main() {
   const int nParticles = 2;
 
   Particle particles[nParticles];
-  initialize(&particles[0], 'x', minColumn, 6.3);
-  initialize(&particles[1], '*', maxColumn-1, -5.0);
+  particles[0].initialize('x', minColumn, 6.3);
+  particles[1].initialize('*', maxColumn-1, -5.0);
   
   //chascreen[screenSize];
   char* screen = new char[screenSize];
@@ -74,10 +85,3 @@ void clear_screen(char * const screen) {
 }
 
 
-void initialize(Particle *const particle, char const symbol, int const position, double const speed)
-{
-  particle->symbol = symbol;
-  particle->position = position;
-  particle->speed = speed;
-
-}
