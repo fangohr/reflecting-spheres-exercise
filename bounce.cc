@@ -20,7 +20,7 @@ int main() {
   const int stopTime = 60;
   const int nParticles = 2;
 
-  struct Particle particles[nParticles];
+  Particle particles[nParticles];
   particles[0].position = minColumn;
   particles[0].speed = 6.3;
   particles[0].symbol = 'x';
@@ -47,8 +47,8 @@ int main() {
 }
 
 
-//void draw(char screen[], const struct Particle& particle) {
-void draw(char screen[], struct Particle *particle) {
+//void draw(char screen[], const Particle& particle) {
+void draw(char screen[], Particle *particle) {
   screen[static_cast<int>(particle->position)] = particle->symbol;
 }
 
@@ -65,7 +65,7 @@ void clear_screen(char screen[]) {
   }
 }
 
-void move(struct Particle *particle) {
+void move(Particle *particle) {
   particle->position += particle->speed;
   if (particle->position >= maxColumn) {
     particle->position = maxColumn;
