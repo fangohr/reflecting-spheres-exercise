@@ -18,7 +18,8 @@ int main() {
   double particleSpeeds[nParticles] = {6.3, -5.0};
   const char particleSymbols[nParticles] = {'x', '*'};
 
-  char screen[screenSize];
+  //char screen[screenSize];
+  char* screen = new char[screenSize];
 
   while (timeStep < stopTime) {
     clear_screen(screen);
@@ -30,6 +31,9 @@ int main() {
     print_screen(screen);
     timeStep++;
   }
+
+  // de-allocate memory and destroy objects
+  delete [] screen;
 }
 
 
