@@ -1,13 +1,10 @@
 language: cpp
-language: python
+
 python:
   - 3.5
 compiler:
   - clang
 #  - gcc
-
-#install:
-#  sudo apt-get install -qq gcc-4.8 g++
 
 script: make && make test
 
@@ -20,4 +17,3 @@ addons:
     - gcc-4.8
     - g++-4.8
     - clang
-#    - python3-pytest
