@@ -1,5 +1,5 @@
 language: cpp
-
+dist: trusty
 python:
   - 3.5
 compiler:
