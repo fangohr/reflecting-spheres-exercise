@@ -12,25 +12,25 @@ struct Particle {
   double position;
   double speed;
   void move() {
-    this->position += this->speed;
-    if (this->position >= maxColumn) {
-      this->position = maxColumn;
-      this->speed = -this->speed;
-    } else if (this->position < minColumn) {
-      this->position = minColumn;
-      this->speed = -this->speed;
+    position += speed;
+    if (position >= maxColumn) {
+      position = maxColumn;
+      speed = -speed;
+    } else if (position < minColumn) {
+      position = minColumn;
+      speed = -speed;
     }    
   }
 
-  void initialize(char const symbol, int const position, double const speed)
+  void initialize(char const symbol_, int const position_, double const speed_)
   {
-    this->symbol = symbol;
-    this->position = position;
-    this->speed = speed;
+    symbol = symbol_;
+    position = position_;
+    speed = speed_;
   }
 
   void draw(char * const buffer) {
-    buffer[static_cast<int>(this->position)] = this->symbol;
+    buffer[static_cast<int>(position)] = symbol;
   }
 };
 
