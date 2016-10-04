@@ -1,6 +1,10 @@
-language: python
-python:
-  - 3.5
+language: cpp
+#language: python
+#python:
+#  - 3.5
+compiler:
+  - clang
+#  - gcc
 
 #install:
 #  sudo apt-get install -qq gcc-4.8 g++
@@ -16,3 +20,4 @@ addons:
     - gcc-4.8
     - g++-4.8
     - clang
+    - python3-pytest
