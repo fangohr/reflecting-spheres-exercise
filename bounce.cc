@@ -7,7 +7,7 @@ const int screenSize = maxColumn + 1;   // buffer for the screen
 void move(struct Particle &particle);
 void clear_screen(char screen[]);
 void print_screen(char screen[]);
-void draw(char screen[], const struct Particle &particle);
+void draw(char screen[], struct Particle *particle);
 
 struct Particle {
   char symbol;
@@ -34,7 +34,7 @@ int main() {
   while (timeStep < stopTime) {
     clear_screen(screen);
     for (int i = 0; i < nParticles; i++) {
-      draw(screen, particles[i]);
+      draw(screen, particles+i);
       move(particles[i]);
     }
     
@@ -47,8 +47,9 @@ int main() {
 }
 
 
-void draw(char screen[], const struct Particle& particle) {
-  screen[static_cast<int>(particle.position)] = particle.symbol;
+//void draw(char screen[], const struct Particle& particle) {
+void draw(char screen[], struct Particle *particle) {
+  screen[static_cast<int>(particle->position)] = particle->symbol;
 }
 
 void print_screen(char screen[]) {
