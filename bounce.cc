@@ -16,6 +16,16 @@ struct Screen {
   }
   
   void draw(int const position, char const symbol) {
+    //assert(position < this->size);
+    if (position >= this->size-10) {
+      std::cout << "position is " << position << " but screen max column is " << this->size << std::endl;
+      abort();
+    }
+    if (position < 0) {
+      std::cout << "position is " << position << " but should be positive" << std::endl;
+      abort();
+    }
+    
     this->buffer[position] = symbol;
   }
 
