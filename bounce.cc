@@ -23,7 +23,7 @@ int main() {
 
   Particle particles[nParticles];
   initialize(&particles[0], 'x', minColumn, 6.3);
-  initialize(&particles[0], 'x', maxColumn-1, -5.0);
+  initialize(&particles[1], '*', maxColumn-1, -5.0);
   
   //chascreen[screenSize];
   char* screen = new char[screenSize];
