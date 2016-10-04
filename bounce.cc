@@ -22,11 +22,11 @@ struct Particle {
     }    
   }
 
-  void initialize(char const symbol_, int const position_, double const speed_)
+  void initialize(char const symbol, int const position, double const speed)
   {
-    symbol = symbol_;
-    position = position_;
-    speed = speed_;
+    this->symbol = symbol;
+    this->position = position;
+    this->speed = speed;
   }
 
   void draw(char * const buffer) {
