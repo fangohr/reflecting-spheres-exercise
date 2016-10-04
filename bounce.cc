@@ -8,6 +8,7 @@ void move(struct Particle * const particle);
 void clear_screen(char * const screen);
 void print_screen(char const * const screen);
 void draw(char * const screen, struct Particle const * const particle);
+void initialize(Particle *const particle, char const symbol, int const position, double const speed);
 
 struct Particle {
   char symbol;
@@ -21,12 +22,8 @@ int main() {
   const int nParticles = 2;
 
   Particle particles[nParticles];
-  particles[0].position = minColumn;
-  particles[0].speed = 6.3;
-  particles[0].symbol = 'x';
-  particles[1].position = maxColumn-1;
-  particles[1].speed = -5.0;
-  particles[1].symbol = 'x';
+  initialize(&particles[0], 'x', minColumn, 6.3);
+  initialize(&particles[0], 'x', maxColumn-1, -5.0);
   
   //chascreen[screenSize];
   char* screen = new char[screenSize];
@@ -76,3 +73,10 @@ void move(Particle *const particle) {
   }    
 }
 
+void initialize(Particle *const particle, char const symbol, int const position, double const speed)
+{
+  particle->symbol = symbol;
+  particle->position = position;
+  particle->speed = speed;
+
+}
