@@ -29,7 +29,7 @@ struct Particle {
     this->speed = speed;
   }
 
-  void draw(char * const buffer) {
+  void draw(char * const buffer) const {  // const member function - doesn't allow to change members
     buffer[static_cast<int>(position)] = symbol;
   }
 };
