@@ -1,3 +1,5 @@
+
+#include <cstdlib>                      // access to 'abort' -- there must be a more C++ like replacement?
 #include <iostream>
 
 const int minColumn = 0;
@@ -17,7 +19,7 @@ struct Screen {
   
   void draw(int const position, char const symbol) {
     //assert(position < this->size);
-    if (position >= this->size-10) {
+    if (position >= this->size) {
       std::cout << "position is " << position << " but screen max column is " << this->size << std::endl;
       abort();
     }
