@@ -2,10 +2,10 @@
 
 const int minColumn = 0;
 const int maxColumn = 80;               // the real world
-const int screenSize = maxColumn + 1;   // buffer for the screen
+const int bufferSize = maxColumn + 1;   // buffer for the screen
 
-void clear_screen(char * const screen);
-void print_screen(char const * const screen);
+void clear_screen(char * const buffer);
+void print_screen(char const * const buffer);
 
 struct Particle {
   char symbol;
@@ -29,8 +29,8 @@ struct Particle {
     this->speed = speed;
   }
 
-  void draw(char * const screen) {
-    screen[static_cast<int>(this->position)] = this->symbol;
+  void draw(char * const buffer) {
+    buffer[static_cast<int>(this->position)] = this->symbol;
   }
 };
 
@@ -43,33 +43,33 @@ int main() {
   particles[0].initialize('x', minColumn, 6.3);
   particles[1].initialize('*', maxColumn-1, -5.0);
   
-    char* screen = new char[screenSize];
+    char* buffer = new char[bufferSize];
 
   while (timeStep < stopTime) {
-    clear_screen(screen);
+    clear_screen(buffer);
     for (int i = 0; i < nParticles; i++) {
-      particles[i].draw(screen);
+      particles[i].draw(buffer);
       particles[i].move();
     }
     
-    print_screen(screen);
+    print_screen(buffer);
     timeStep++;
   }
 
   // de-allocate memory and destroy objects
-  delete [] screen;
+  delete [] buffer;
 }
 
 
-void print_screen(char const * const screen) {
-  for (int i = 0; i < screenSize; i++) {
-    std::cout << screen[i];
+void print_screen(char const * const buffer) {
+  for (int i = 0; i < bufferSize; i++) {
+    std::cout << buffer[i];
   }
   std::cout << std::endl;
 }
 
-void clear_screen(char * const screen) {
-  for (int i = 0; i < screenSize; i++) {
-    screen[i] = ' ';
+void clear_screen(char * const buffer) {
+  for (int i = 0; i < bufferSize; i++) {
+    buffer[i] = ' ';
   }
 }
