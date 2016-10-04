@@ -17,9 +17,7 @@ addons:
     - g++-4.8
     - clang
 
-
-
-# attempt to install python3 manually
+# install python3 manually (in cpp language set up)
 before_install:
   - sudo apt-get -y install python3-pip python-dev
   - sudo pip3 install -U setuptools
