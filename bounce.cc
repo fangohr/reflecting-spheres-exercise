@@ -22,7 +22,6 @@ struct Particle {
     }    
   }
 
-
   void initialize(char const symbol, int const position, double const speed)
   {
     this->symbol = symbol;
@@ -33,9 +32,6 @@ struct Particle {
   void draw(char * const screen) {
     screen[static_cast<int>(this->position)] = this->symbol;
   }
-
-
-  
 };
 
 int main() {
@@ -47,14 +43,12 @@ int main() {
   particles[0].initialize('x', minColumn, 6.3);
   particles[1].initialize('*', maxColumn-1, -5.0);
   
-  //chascreen[screenSize];
-  char* screen = new char[screenSize];
+    char* screen = new char[screenSize];
 
   while (timeStep < stopTime) {
     clear_screen(screen);
     for (int i = 0; i < nParticles; i++) {
       particles[i].draw(screen);
-      //move(particles+i);
       particles[i].move();
     }
     
@@ -66,8 +60,6 @@ int main() {
   delete [] screen;
 }
 
-
-//void draw(char screen[], const Particle& particle) {
 
 void print_screen(char const * const screen) {
   for (int i = 0; i < screenSize; i++) {
@@ -81,4 +73,3 @@ void clear_screen(char * const screen) {
     screen[i] = ' ';
   }
 }
-
