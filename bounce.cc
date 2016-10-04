@@ -7,7 +7,7 @@ const int screenSize = maxColumn + 1;   // buffer for the screen
 void move(struct Particle &particle);
 void clear_screen(char screen[]);
 void print_screen(char screen[]);
-void draw(char screen[], const struct Particle particle);
+void draw(char screen[], const struct Particle &particle);
 
 struct Particle {
   char symbol;
@@ -47,7 +47,7 @@ int main() {
 }
 
 
-void draw(char screen[], const struct Particle particle) {
+void draw(char screen[], const struct Particle& particle) {
   screen[static_cast<int>(particle.position)] = particle.symbol;
 }
 
