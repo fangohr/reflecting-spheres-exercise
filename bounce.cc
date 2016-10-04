@@ -4,7 +4,6 @@ const int minColumn = 0;
 const int maxColumn = 80;               // the real world
 const int screenSize = maxColumn + 1;   // buffer for the screen
 
-void move(struct Particle * const particle);
 void clear_screen(char * const screen);
 void print_screen(char const * const screen);
 void draw(char * const screen, struct Particle const * const particle);
@@ -14,6 +13,17 @@ struct Particle {
   char symbol;
   double position;
   double speed;
+  void move() {
+    this->position += this->speed;
+    if (this->position >= maxColumn) {
+      this->position = maxColumn;
+      this->speed = -this->speed;
+    } else if (this->position < minColumn) {
+      this->position = minColumn;
+      this->speed = -this->speed;
+    }    
+  }
+
 };
 
 int main() {
@@ -32,7 +42,8 @@ int main() {
     clear_screen(screen);
     for (int i = 0; i < nParticles; i++) {
       draw(screen, particles+i);
-      move(particles+i);
+      //move(particles+i);
+      particles[i].move();
     }
     
     print_screen(screen);
@@ -62,16 +73,6 @@ void clear_screen(char * const screen) {
   }
 }
 
-void move(Particle *const particle) {
-  particle->position += particle->speed;
-  if (particle->position >= maxColumn) {
-    particle->position = maxColumn;
-    particle->speed = -particle->speed;
-  } else if (particle->position < minColumn) {
-    particle->position = minColumn;
-    particle->speed = -particle->speed;
-  }    
-}
 
 void initialize(Particle *const particle, char const symbol, int const position, double const speed)
 {
