@@ -2,10 +2,37 @@
 
 const int minColumn = 0;
 const int maxColumn = 80;               // the real world
-const int bufferSize = maxColumn + 1;   // buffer for the screen
 
-void clear_screen(char * const buffer);
-void print_screen(char const * const buffer);
+struct Screen {
+  char* buffer;
+  unsigned int size;        // number of columns
+  void initialize(int size) {
+    this->size = size;
+    this->buffer = new char[size];
+  }
+
+  void destroy() {
+    delete [] this->buffer;
+  }
+  
+  void draw(int const position, char const symbol) {
+    this->buffer[position] = symbol;
+  }
+
+  void print() {
+    for (int i = 0; i < this->size; i++) {
+      std::cout << this->buffer[i];
+    }
+    std::cout << std::endl;
+  }
+
+  void clear() {
+    for (int i = 0; i < this->size; i++) {
+      this->buffer[i] = ' ';
+    }
+  }
+};
+
 
 struct Particle {
   char symbol;
@@ -29,8 +56,8 @@ struct Particle {
     this->speed = speed;
   }
 
-  void draw(char * const buffer) const {  // const member function - doesn't allow to change members
-    buffer[static_cast<int>(position)] = symbol;
+  void draw(Screen * const screen)  {
+    screen->draw(static_cast<int>(this->position), this->symbol);
   }
 };
 
@@ -43,33 +70,22 @@ int main() {
   particles[0].initialize('x', minColumn, 6.3);
   particles[1].initialize('*', maxColumn-1, -5.0);
   
-    char* buffer = new char[bufferSize];
+  Screen screen;
+  screen.initialize(maxColumn+1);
 
   while (timeStep < stopTime) {
-    clear_screen(buffer);
+    screen.clear();
     for (int i = 0; i < nParticles; i++) {
-      particles[i].draw(buffer);
+      particles[i].draw(&screen);
       particles[i].move();
     }
     
-    print_screen(buffer);
+    screen.print();
     timeStep++;
   }
 
   // de-allocate memory and destroy objects
-  delete [] buffer;
+  screen.destroy();
 }
 
 
-void print_screen(char const * const buffer) {
-  for (int i = 0; i < bufferSize; i++) {
-    std::cout << buffer[i];
-  }
-  std::cout << std::endl;
-}
-
-void clear_screen(char * const buffer) {
-  for (int i = 0; i < bufferSize; i++) {
-    buffer[i] = ' ';
-  }
-}
