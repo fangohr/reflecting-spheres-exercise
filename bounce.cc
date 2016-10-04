@@ -4,28 +4,38 @@ const int minColumn = 0;
 const int maxColumn = 80;               // the real world
 const int screenSize = maxColumn + 1;   // buffer for the screen
 
-void move(double &particlePosition, double &particleSpeed);
+void move(struct Particle &particle);
 void clear_screen(char screen[]);
 void print_screen(char screen[]);
-void draw(char screen[], double const particlePosition, char const particleSymbol);
+void draw(char screen[], const struct Particle particle);
+
+struct Particle {
+  char symbol;
+  double position;
+  double speed;
+};
 
 int main() {
   int timeStep = 0;
   const int stopTime = 60;
   const int nParticles = 2;
 
-  double particlePositions[nParticles] = {minColumn, maxColumn-1};
-  double particleSpeeds[nParticles] = {6.3, -5.0};
-  const char particleSymbols[nParticles] = {'x', '*'};
-
-  //char screen[screenSize];
+  struct Particle particles[nParticles];
+  particles[0].position = minColumn;
+  particles[0].speed = 6.3;
+  particles[0].symbol = 'x';
+  particles[1].position = maxColumn-1;
+  particles[1].speed = -5.0;
+  particles[1].symbol = 'x';
+  
+  //chascreen[screenSize];
   char* screen = new char[screenSize];
 
   while (timeStep < stopTime) {
     clear_screen(screen);
     for (int i = 0; i < nParticles; i++) {
-      draw(screen, particlePositions[i], particleSymbols[i]);
-      move(particlePositions[i], particleSpeeds[i]);
+      draw(screen, particles[i]);
+      move(particles[i]);
     }
     
     print_screen(screen);
@@ -37,8 +47,8 @@ int main() {
 }
 
 
-void draw(char screen[], const double pos, const char sym) {
-  screen[static_cast<int>(pos)] = sym;
+void draw(char screen[], const struct Particle particle) {
+  screen[static_cast<int>(particle.position)] = particle.symbol;
 }
 
 void print_screen(char screen[]) {
@@ -54,14 +64,14 @@ void clear_screen(char screen[]) {
   }
 }
 
-void move(double &particlePosition, double &particleSpeed) {
-  particlePosition += particleSpeed;
-  if (particlePosition >= maxColumn) {
-    particlePosition = maxColumn;
-    particleSpeed = -particleSpeed;
-  } else if (particlePosition < minColumn) {
-    particlePosition = minColumn;
-    particleSpeed = -particleSpeed;
+void move(struct Particle &particle) {
+  particle.position += particle.speed;
+  if (particle.position >= maxColumn) {
+    particle.position = maxColumn;
+    particle.speed = -particle.speed;
+  } else if (particle.position < minColumn) {
+    particle.position = minColumn;
+    particle.speed = -particle.speed;
   }    
 }
 
