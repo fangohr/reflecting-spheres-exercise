@@ -6,8 +6,10 @@ const int minColumn = 0;
 const int maxColumn = 80;               // the real world
 
 struct Screen {
+private:
   char* buffer;
   unsigned int size;        // number of columns
+public:
   void initialize(int size) {
     this->size = size;
     this->buffer = new char[size];
