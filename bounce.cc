@@ -5,7 +5,7 @@
 const int minColumn = 0;
 const int maxColumn = 80;               // the real world
 
-struct Screen {
+class Screen {
 public:
   void initialize(int size) {
     this->size = size;
@@ -50,7 +50,7 @@ private:
 };
 
 
-struct Particle {
+class Particle {
 public:
   void move() {
     position += speed;
