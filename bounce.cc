@@ -99,9 +99,17 @@ public:
   }
 
   void draw(Screen &screen) const {
-    // screen.put(static_cast<int>(this->position), this->symbol);
     screen[this->position] = this->symbol;
   }
+
+  Particle& operator=(Particle rhs) {
+    //cout << "In Particle::operator=" << endl;
+    this->position = rhs.position;
+    this->position = rhs.position;
+    this->speed = rhs.speed;
+    return *this;
+  }
+  
 
 private:
   char symbol;
@@ -118,10 +126,14 @@ int main() {
     Particle('x', minColumn, 6.3),
     Particle('*', maxColumn-1, -5.0)
   };
+
+  // do initialisation again to use assignment operator
+  particles[0] = Particle('x', minColumn, 6.3);
+  particles[1] = Particle('*', maxColumn-1, -5.0);
   
   Screen screen(maxColumn+1);
   
-  while (timeStep < stopTime) {
+  while ((timeStep < stopTime) && true) {
     screen.clear();
     for (int i = 0; i < nParticles; i++) {
       particles[i].draw(screen);
@@ -132,5 +144,4 @@ int main() {
     timeStep++;
   }
 }
-
 
