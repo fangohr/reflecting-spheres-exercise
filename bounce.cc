@@ -49,9 +49,11 @@ public:
 
 
 struct Particle {
+private:
   char symbol;
   double position;
   double speed;
+public:
   void move() {
     position += speed;
     if (position >= maxColumn) {
