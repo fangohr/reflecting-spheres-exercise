@@ -6,9 +6,6 @@ const int minColumn = 0;
 const int maxColumn = 80;               // the real world
 
 struct Screen {
-private:
-  char* buffer;
-  unsigned int size;        // number of columns
 public:
   void initialize(int size) {
     this->size = size;
@@ -45,14 +42,15 @@ public:
       this->buffer[i] = ' ';
     }
   }
+
+private:
+  char* buffer;
+  unsigned int size;        // number of columns
+
 };
 
 
 struct Particle {
-private:
-  char symbol;
-  double position;
-  double speed;
 public:
   void move() {
     position += speed;
@@ -75,6 +73,12 @@ public:
   void draw(Screen * const screen)  {
     screen->put(static_cast<int>(this->position), this->symbol);
   }
+
+private:
+  char symbol;
+  double position;
+  double speed;
+
 };
 
 int main() {
