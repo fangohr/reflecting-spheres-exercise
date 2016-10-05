@@ -46,7 +46,13 @@ def test_output_is_nontrivial():
     status, command_output = subprocess.getstatusoutput('./bounce')
     assert status == 0
     print(len(command_output))
-    assert len(command_output) == 4919   # just assume current number is correct
+    #
+    # assert len(command_output) == 4919   # just assume current number is correct
+
+    # as we add additional outputs, the overall output gets longer
+    assert len(command_output) >= 4919   # just assume current number is correct
+    
+    
     n_x = command_output.count('x')
     print("number of x = {}".format(n_x))
     assert n_x == 59
