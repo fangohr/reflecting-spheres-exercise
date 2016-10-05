@@ -16,7 +16,7 @@ public:
   {
     // cout << "Hello from the Screen constructor" << endl;
     // this->size = size;
-    this->buffer = new char[size];
+    // this->buffer = new char[size];
   }
 
   Screen(const Screen & other)
