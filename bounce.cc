@@ -12,7 +12,15 @@ public:
     this->buffer = new char[size];
   }
 
+  Screen(const Screen & other) {
+    std::cout << "Hello from the Screen copy constructor" << std::endl;
+    //this->size = size;
+    //this->buffer = new char[size];
+  }
+
+  
   ~Screen() {
+    std::cout << "Hello from the Screen deconstructor" << std::endl;
     delete [] this->buffer;
   }
   
