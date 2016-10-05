@@ -19,7 +19,7 @@ public:
     delete [] this->buffer;
   }
   
-  void draw(int const position, char const symbol) {
+  void put(int const position, char const symbol) {
     //assert(position < this->size);
     if (position >= this->size) {
       std::cout << "position is " << position << " but screen max column is " << this->size << std::endl;
@@ -71,7 +71,7 @@ struct Particle {
   }
 
   void draw(Screen * const screen)  {
-    screen->draw(static_cast<int>(this->position), this->symbol);
+    screen->put(static_cast<int>(this->position), this->symbol);
   }
 };
 
