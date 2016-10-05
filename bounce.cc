@@ -12,7 +12,7 @@ const int maxColumn = 80;               // the real world
 class Screen {
 public:
   Screen(int size)
-    : size(size)
+    : buffer(new char[size]), size(size)
   {
     // cout << "Hello from the Screen constructor" << endl;
     // this->size = size;
@@ -20,12 +20,12 @@ public:
   }
 
   Screen(const Screen & other)
-    : size(other.size)
+    :  buffer(new char[other.size]), size(other.size)
   {
     cout << "Hello from the Screen copy constructor" << endl;
     // other is the existing instance
     // this->size = other.size;
-    this->buffer = new char[this->size];
+    // this->buffer = new char[this->size];
     // copy buffer data
     std::copy(other.buffer, other.buffer + other.size, this->buffer);
 
