@@ -78,7 +78,7 @@ public:
     this->speed = speed;
   }
 
-  void draw(Screen screen)  {
+  void draw(Screen &screen) const {
     screen.put(static_cast<int>(this->position), this->symbol);
   }
 
