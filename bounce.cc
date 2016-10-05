@@ -1,6 +1,7 @@
 
 #include <cstdlib>                      // access to 'abort' -- there must be a more C++ like replacement?
 #include <iostream>
+#include <algorithm>
 
 const int minColumn = 0;
 const int maxColumn = 80;               // the real world
@@ -8,14 +9,23 @@ const int maxColumn = 80;               // the real world
 class Screen {
 public:
   Screen(int size) {
+    // std::cout << "Hello from the Screen constructor" << std::endl;
     this->size = size;
     this->buffer = new char[size];
   }
 
   Screen(const Screen & other) {
     std::cout << "Hello from the Screen copy constructor" << std::endl;
-    //this->size = size;
-    //this->buffer = new char[size];
+    // other is the existing instance
+    this->size = other.size;
+    this->buffer = new char[this->size];
+    // copy buffer data
+    std::copy(other.buffer, other.buffer + other.size, this->buffer);
+
+    // // manual version
+    // for (int i=0; i< this->size; i++) {
+    //   this->buffer[i] = other.buffer[i];
+    }
   }
 
   
@@ -99,8 +109,7 @@ int main() {
   particles[1].initialize('*', maxColumn-1, -5.0);
   
   Screen screen(maxColumn+1);
-  // screen.initialize(
-
+  
   while (timeStep < stopTime) {
     screen.clear();
     for (int i = 0; i < nParticles; i++) {
