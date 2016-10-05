@@ -12,7 +12,7 @@ public:
     this->buffer = new char[size];
   }
 
-  void destroy() {
+  ~Screen() {
     delete [] this->buffer;
   }
   
@@ -103,9 +103,6 @@ int main() {
     screen.print();
     timeStep++;
   }
-
-  // de-allocate memory and destroy objects
-  screen.destroy();
 }
 
 
