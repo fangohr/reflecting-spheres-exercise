@@ -19,10 +19,12 @@ public:
     this->buffer = new char[size];
   }
 
-  Screen(const Screen & other) {
+  Screen(const Screen & other)
+    : size(other.size)
+  {
     cout << "Hello from the Screen copy constructor" << endl;
     // other is the existing instance
-    this->size = other.size;
+    // this->size = other.size;
     this->buffer = new char[this->size];
     // copy buffer data
     std::copy(other.buffer, other.buffer + other.size, this->buffer);
