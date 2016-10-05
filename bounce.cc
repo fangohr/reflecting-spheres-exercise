@@ -15,17 +15,12 @@ public:
     : buffer(new char[size]), size(size)
   {
     // cout << "Hello from the Screen constructor" << endl;
-    // this->size = size;
-    // this->buffer = new char[size];
   }
 
   Screen(const Screen & other)
     :  buffer(new char[other.size]), size(other.size)
   {
     cout << "Hello from the Screen copy constructor" << endl;
-    // other is the existing instance
-    // this->size = other.size;
-    // this->buffer = new char[this->size];
     // copy buffer data
     std::copy(other.buffer, other.buffer + other.size, this->buffer);
 
@@ -118,9 +113,7 @@ int main() {
     Particle('x', minColumn, 6.3),
     Particle('*', maxColumn-1, -5.0)
   };
-  //particles[0] = Particle('x', minColumn, 6.3);
-  //particles[1] = Particle('*', maxColumn-1, -5.0);
-
+  
   Screen screen(maxColumn+1);
   
   while (timeStep < stopTime) {
