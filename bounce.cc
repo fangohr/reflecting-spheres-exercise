@@ -77,6 +77,14 @@ private:
 
 class Particle {
 public:
+
+  Particle(char const symbol, int const position, double const speed):
+    symbol(symbol), position(position), speed(speed)
+  {
+  };
+
+  Particle() : symbol('-'), position(0.), speed(0.) {};
+  
   void move() {
     position += speed;
     if (position >= maxColumn) {
@@ -112,9 +120,9 @@ int main() {
   const int nParticles = 2;
 
   Particle particles[nParticles];
-  particles[0].initialize('x', minColumn, 6.3);
-  particles[1].initialize('*', maxColumn-1, -5.0);
-  
+  particles[0] = Particle('x', minColumn, 6.3);
+  particles[1] = Particle('*', maxColumn-1, -5.0);
+
   Screen screen(maxColumn+1);
   
   while (timeStep < stopTime) {
