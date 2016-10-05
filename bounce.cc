@@ -7,7 +7,7 @@ const int maxColumn = 80;               // the real world
 
 class Screen {
 public:
-  void initialize(int size) {
+  Screen(int size) {
     this->size = size;
     this->buffer = new char[size];
   }
@@ -90,8 +90,8 @@ int main() {
   particles[0].initialize('x', minColumn, 6.3);
   particles[1].initialize('*', maxColumn-1, -5.0);
   
-  Screen screen;
-  screen.initialize(maxColumn+1);
+  Screen screen(maxColumn+1);
+  // screen.initialize(
 
   while (timeStep < stopTime) {
     screen.clear();
