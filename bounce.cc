@@ -3,19 +3,22 @@
 #include <iostream>
 #include <algorithm>
 
+using std::cout;
+using std::endl;
+
 const int minColumn = 0;
 const int maxColumn = 80;               // the real world
 
 class Screen {
 public:
   Screen(int size) {
-    // std::cout << "Hello from the Screen constructor" << std::endl;
+    // cout << "Hello from the Screen constructor" << endl;
     this->size = size;
     this->buffer = new char[size];
   }
 
   Screen(const Screen & other) {
-    std::cout << "Hello from the Screen copy constructor" << std::endl;
+    cout << "Hello from the Screen copy constructor" << endl;
     // other is the existing instance
     this->size = other.size;
     this->buffer = new char[this->size];
@@ -25,23 +28,23 @@ public:
     // // manual version
     // for (int i=0; i< this->size; i++) {
     //   this->buffer[i] = other.buffer[i];
-    }
+    // }
   }
 
   
   ~Screen() {
-    std::cout << "Hello from the Screen deconstructor" << std::endl;
+    cout << "Hello from the Screen deconstructor" << endl;
     delete [] this->buffer;
   }
   
   void put(int const position, char const symbol) {
     //assert(position < this->size);
     if (position >= this->size) {
-      std::cout << "position is " << position << " but screen max column is " << this->size << std::endl;
+      cout << "position is " << position << " but screen max column is " << this->size << endl;
       abort();
     }
     if (position < 0) {
-      std::cout << "position is " << position << " but should be positive" << std::endl;
+      cout << "position is " << position << " but should be positive" << endl;
       abort();
     }
     
@@ -50,9 +53,9 @@ public:
 
   void print() {
     for (int i = 0; i < this->size; i++) {
-      std::cout << this->buffer[i];
+      cout << this->buffer[i];
     }
-    std::cout << std::endl;
+    cout << endl;
   }
 
   void clear() {
