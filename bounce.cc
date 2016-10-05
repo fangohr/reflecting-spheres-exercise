@@ -63,6 +63,10 @@ public:
     }
   }
 
+  char& operator[](unsigned int const pos) {
+    return this->buffer[pos];
+  }
+
 private:
   char* buffer;
   unsigned int size;        // number of columns
@@ -95,7 +99,8 @@ public:
   }
 
   void draw(Screen &screen) const {
-    screen.put(static_cast<int>(this->position), this->symbol);
+    // screen.put(static_cast<int>(this->position), this->symbol);
+    screen[this->position] = this->symbol;
   }
 
 private:
