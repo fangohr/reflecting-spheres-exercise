@@ -70,8 +70,8 @@ public:
     this->speed = speed;
   }
 
-  void draw(Screen * const screen)  {
-    screen->put(static_cast<int>(this->position), this->symbol);
+  void draw(Screen screen)  {
+    screen.put(static_cast<int>(this->position), this->symbol);
   }
 
 private:
@@ -96,7 +96,7 @@ int main() {
   while (timeStep < stopTime) {
     screen.clear();
     for (int i = 0; i < nParticles; i++) {
-      particles[i].draw(&screen);
+      particles[i].draw(screen);
       particles[i].move();
     }
     
