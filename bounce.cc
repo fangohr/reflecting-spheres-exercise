@@ -42,13 +42,6 @@ public:
       return *this;
   }
 
-  // friend void swap(Screen& first, Screen& second) 
-  // {
-  //   using std::swap;
-  //   swap(first.size, second.size);
-  //   swap(first.buffer, second.buffer);
-  // }
-
   ~Screen() {
     cout << "Hello from the Screen deconstructor" << endl;
     delete [] this->buffer;
