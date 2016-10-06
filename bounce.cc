@@ -67,15 +67,18 @@ public:
     return this->buffer[pos];
   }
 
-  unsigned int get_size() {
-    return this->size;
-  }
+  unsigned int get_size();
 
 private:
   char* buffer;
   unsigned int size;        // number of columns
 
 };
+
+
+unsigned int Screen::get_size() {
+  return this->size;
+}
 
 
 void swap(Screen& lhs, Screen& rhs) {
