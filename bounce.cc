@@ -12,10 +12,7 @@ const int maxColumn = 80;               // the real world
 class Screen {
 public:
   Screen(int size)
-    : buffer(new char[size]), size(size)
-  {
-    // cout << "Hello from the Screen constructor" << endl;
-  }
+    : buffer(new char[size]), size(size) {}
 
   Screen(const Screen & other)
     :  buffer(new char[other.size]), size(other.size)
