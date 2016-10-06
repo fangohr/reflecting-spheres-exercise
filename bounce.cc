@@ -57,17 +57,15 @@ public:
   Screen& operator=(const Screen& other) {
     if (this != &other) // only if this and other are differenc
       {
-        // strategy: delete old 
-        delete [] this->buffer;
-        this->buffer = new char[other.size];
+        if (this->size != other.size) {
+          delete [] this->buffer;
+          this->buffer = new char[other.size];
+          this->size = other.size;
+        }
+        
         std::copy(other.buffer, other.buffer + other.size, this->buffer);
-        this->size = other.size;
-        return *this;
       }
-    else {
-      return *this;
-    }
-      
+    return *this;
   }
   
 
