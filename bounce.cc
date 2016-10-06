@@ -38,18 +38,6 @@ public:
         using std::swap;
         swap(this->size, other.size);
         swap(this->buffer, other.buffer);
-
-        // // swap size
-        // unsigned int tmp;
-        // tmp = this->size;
-        // this->size = other.size;
-        // other.size = tmp;
-        // 
-        // // swap buffer pointer (!)
-        // char * tmp2 = this->buffer;
-        // this->buffer = other.buffer;
-        // other.buffer = tmp2;
-        
       }
       return *this;
   }
