@@ -24,6 +24,9 @@ private:
 
 };
 
+void swap(Screen& lhs, Screen& rhs);
+
+
 #endif   // Screen_hh
 
 
