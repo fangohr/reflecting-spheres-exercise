@@ -1,6 +1,6 @@
 CXX=clang++
 
-bounce: bounce.cc
+bounce: bounce.cc screen.hh
 	${CXX} -ansi -pedantic -Wall -g -obounce bounce.cc
 
 clean:
