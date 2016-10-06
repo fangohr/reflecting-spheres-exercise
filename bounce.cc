@@ -85,33 +85,16 @@ void swap(Screen& lhs, Screen& rhs) {
 }
 
 
+
 class Particle {
 public:
   Particle() : symbol('-'), position(0.), speed(0.) {}; 
   Particle(char const symbol, int const position, double const speed):
     symbol(symbol), position(position), speed(speed) {};
 
-  void move() {
-    position += speed;
-    if (position >= maxColumn) {
-      position = maxColumn;
-      speed = -speed;
-    } else if (position < minColumn) {
-      position = minColumn;
-      speed = -speed;
-    }    
-  }
-
-  void initialize(char const symbol, int const position, double const speed)
-  {
-    this->symbol = symbol;
-    this->position = position;
-    this->speed = speed;
-  }
-
-  void draw(Screen &screen) const {
-    screen[this->position] = this->symbol;
-  }
+  void move();
+  void initialize(char const symbol, int const position, double const speed);
+  void draw(Screen &screen) const; 
 
   Particle& operator=(const Particle& other) {
     //cout << "In Particle::operator=" << endl;
@@ -131,6 +114,38 @@ private:
   double position;
   double speed;
 };
+
+
+
+
+
+
+
+
+void Particle::move() {
+  position += speed;
+  if (position >= maxColumn) {
+    position = maxColumn;
+    speed = -speed;
+  } else if (position < minColumn) {
+    position = minColumn;
+    speed = -speed;
+  }    
+}
+
+void Particle::initialize(char const symbol, int const position, double const speed)
+{
+  this->symbol = symbol;
+  this->position = position;
+  this->speed = speed;
+}
+
+void Particle::draw(Screen &screen) const {
+  screen[this->position] = this->symbol;
+}
+
+
+
 
 int main() {
   int timeStep = 0;
