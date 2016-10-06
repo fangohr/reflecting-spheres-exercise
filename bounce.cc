@@ -67,6 +67,10 @@ public:
     return this->buffer[pos];
   }
 
+  unsigned int get_size() {
+    return this->size;
+  }
+
 private:
   char* buffer;
   unsigned int size;        // number of columns
