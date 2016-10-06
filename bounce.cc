@@ -32,41 +32,48 @@ public:
 
   // Attempt to write assignment operator re-using destructor and
   // copy constructor: (not working)
+  Screen& operator=(Screen other) {
+    if (this != &other) // only if this and other are differenc
+      {
+        //using std::swap;
+        //swap(this->size, other.size);
+        //swap(this->buffer, other.buffer);
+
+        // swap size
+        unsigned int tmp;
+        tmp = this->size;
+        this->size = other.size;
+        other.size = tmp;
+
+        // swap buffer pointer (!)
+        char * tmp2 = this->buffer;
+        this->buffer = other.buffer;
+        other.buffer = tmp2;
+        
+      }
+      return *this;
+  }
+
+  // friend void swap(Screen& first, Screen& second) 
+  // {
+  //   using std::swap;
+  //   swap(first.size, second.size);
+  //   swap(first.buffer, second.buffer);
+  // }
+
   // Screen& operator=(const Screen& other) {
   //   if (this != &other) // only if this and other are differenc
   //     {
-  //       // strategy: delete old 
-  //       delete this;
-  //       // create new by copying other
-  //       Screen newscreen = other;
-  //       return newscreen;
+  //       if (this->size != other.size) {
+  //         delete [] this->buffer;
+  //         this->buffer = new char[other.size];
+  //         this->size = other.size;
+  //       }
+  //       
+  //       std::copy(other.buffer, other.buffer + other.size, this->buffer);
   //     }
-  //   else {
-  //     return *this;
-  //   }
-  //     
+  //   return *this;
   // }
-
-  friend void swap(Screen& first, Screen& second) 
-  {
-    using std::swap;
-    swap(first.size, second.size);
-    swap(first.buffer, second.buffer);
-  }
-
-  Screen& operator=(const Screen& other) {
-    if (this != &other) // only if this and other are differenc
-      {
-        if (this->size != other.size) {
-          delete [] this->buffer;
-          this->buffer = new char[other.size];
-          this->size = other.size;
-        }
-        
-        std::copy(other.buffer, other.buffer + other.size, this->buffer);
-      }
-    return *this;
-  }
   
 
   ~Screen() {
@@ -195,25 +202,29 @@ int main() {
   }
 
 
-
   // // would be nice to have some tests
-  // Screen screen2(3);
-  // Screen screen3(5);
-  // if (screen2.get_size() != 3) {
-  //   cout << "error (mark 0)" << endl;
-  //   abort();
-  // }
-  // 
-  // //Screen::swap(screen2, screen3);
-  // screen2.swap(screen3);
-  // if (screen2.get_size() != 5) {
-  //   cout << "error (mark 1)" << endl;
-  //   abort();
-  // }
-  // if (screen3.get_size() != 3) {
-  //   cout << "error (mark 2)" << endl;
-  //   abort();
-  // }
+  Screen screen2(3);
+  Screen screen3(5);
+  if (screen2.get_size() != 3) {
+    cout << "error (mark 0)" << endl;
+    abort();
+  }
+
+  if (screen3.get_size() != 5) {
+    cout << "error (mark 0)" << endl;
+    abort();
+  }
+
+  screen3 = screen2;
+  
+  if (screen2.get_size() != 3) {
+    cout << "error (mark 1)" << endl;
+    abort();
+  }
+  if (screen3.get_size() != 3) {
+    cout << "error (mark 2)" << endl;
+    abort();
+  }
     
   
   
