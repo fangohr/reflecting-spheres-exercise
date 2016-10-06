@@ -1,5 +1,5 @@
 
-#include <cstdlib>                      // access to 'abort' -- there must be a more C++ like replacement?
+#include <cstdlib>   
 #include <iostream>
 #include <algorithm>
 
