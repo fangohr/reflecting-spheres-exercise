@@ -102,11 +102,15 @@ public:
     screen[this->position] = this->symbol;
   }
 
-  Particle& operator=(Particle rhs) {
+  Particle& operator=(const Particle& other) {
     //cout << "In Particle::operator=" << endl;
-    this->position = rhs.position;
-    this->position = rhs.position;
-    this->speed = rhs.speed;
+    
+    if (this != &other) {  // only if this and other are different,
+                           // avoid self assignment.
+      this->symbol = other.symbol;
+      this->position = other.position;
+      this->speed = other.speed;
+    }
     return *this;
   }
   
