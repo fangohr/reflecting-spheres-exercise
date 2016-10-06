@@ -30,18 +30,6 @@ public:
     // }
   }
 
-  // Attempt to write assignment operator re-using destructor and
-  // copy constructor: (not working)
-//  Screen& operator=(Screen other) {
-//    if (this != &other) // only if this and other are differenc
-//      {
-//        using std::swap;
-//        swap(this->size, other.size);
-//        swap(this->buffer, other.buffer);
-//      }
-//    return *this;
-//  }
-
   Screen& operator=(Screen other) {
     swap(*this, other);
     return *this;
