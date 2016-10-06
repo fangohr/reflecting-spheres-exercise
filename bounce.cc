@@ -30,7 +30,42 @@ public:
     // }
   }
 
+  // Attempt to write assignment operator re-using destructor and
+  // copy constructor: (not working)
+  // Screen& operator=(const Screen& other) {
+  //   if (this != &other) // only if this and other are differenc
+  //     {
+  //       // strategy: delete old 
+  //       delete this;
+  //       // create new by copying other
+  //       Screen newscreen = other;
+  //       return newscreen;
+  //     }
+  //   else {
+  //     return *this;
+  //   }
+  //     
+  // }
+
+
   
+  Screen& operator=(const Screen& other) {
+    if (this != &other) // only if this and other are differenc
+      {
+        // strategy: delete old 
+        delete [] this->buffer;
+        this->buffer = new char[other.size];
+        std::copy(other.buffer, other.buffer + other.size, this->buffer);
+        this->size = other.size;
+        return *this;
+      }
+    else {
+      return *this;
+    }
+      
+  }
+  
+
   ~Screen() {
     cout << "Hello from the Screen deconstructor" << endl;
     delete [] this->buffer;
@@ -140,6 +175,10 @@ int main() {
   particles[1] = Particle('*', maxColumn-1, -5.0);
   
   Screen screen(maxColumn+1);
+  // cout << "size of screen = " << screen.get_size() << endl;
+  // Screen screen2(3);
+  // screen2 = screen;
+  // cout << "size of screen2 = " << screen2.get_size() << endl;
   
   while ((timeStep < stopTime) && true) {
     screen.clear();
