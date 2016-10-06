@@ -163,7 +163,6 @@ int main() {
     timeStep++;
   }
 
-
   // // would be nice to have some tests
   Screen screen2(3);
   Screen screen3(5);
