@@ -187,8 +187,5 @@ int main() {
     cout << "error (mark 2)" << endl;
     abort();
   }
-    
-  
-  
 }
 
