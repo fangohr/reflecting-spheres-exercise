@@ -32,15 +32,22 @@ public:
 
   // Attempt to write assignment operator re-using destructor and
   // copy constructor: (not working)
+//  Screen& operator=(Screen other) {
+//    if (this != &other) // only if this and other are differenc
+//      {
+//        using std::swap;
+//        swap(this->size, other.size);
+//        swap(this->buffer, other.buffer);
+//      }
+//    return *this;
+//  }
+
   Screen& operator=(Screen other) {
-    if (this != &other) // only if this and other are differenc
-      {
-        using std::swap;
-        swap(this->size, other.size);
-        swap(this->buffer, other.buffer);
-      }
-      return *this;
+    swap(*this, other);
+    return *this;
   }
+
+  friend void swap(Screen& lhs, Screen& rhs);
 
   ~Screen() {
     cout << "Hello from the Screen deconstructor" << endl;
@@ -87,6 +94,13 @@ private:
   unsigned int size;        // number of columns
 
 };
+
+
+void swap(Screen& lhs, Screen& rhs) {
+  using std::swap;
+  swap(lhs.size, rhs.size);
+  swap(lhs.buffer, rhs.buffer);
+}
 
 
 class Particle {
