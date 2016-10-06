@@ -21,13 +21,7 @@ public:
     :  buffer(new char[other.size]), size(other.size)
   {
     cout << "Hello from the Screen copy constructor" << endl;
-    // copy buffer data
     std::copy(other.buffer, other.buffer + other.size, this->buffer);
-
-    // // manual version
-    // for (int i=0; i< this->size; i++) {
-    //   this->buffer[i] = other.buffer[i];
-    // }
   }
 
   Screen& operator=(Screen other) {
