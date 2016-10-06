@@ -49,21 +49,6 @@ public:
   //   swap(first.buffer, second.buffer);
   // }
 
-  // Screen& operator=(const Screen& other) {
-  //   if (this != &other) // only if this and other are differenc
-  //     {
-  //       if (this->size != other.size) {
-  //         delete [] this->buffer;
-  //         this->buffer = new char[other.size];
-  //         this->size = other.size;
-  //       }
-  //       
-  //       std::copy(other.buffer, other.buffer + other.size, this->buffer);
-  //     }
-  //   return *this;
-  // }
-  
-
   ~Screen() {
     cout << "Hello from the Screen deconstructor" << endl;
     delete [] this->buffer;
