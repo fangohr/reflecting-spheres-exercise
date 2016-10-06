@@ -47,8 +47,13 @@ public:
   //     
   // }
 
+  friend void swap(Screen& first, Screen& second) 
+  {
+    using std::swap;
+    swap(first.size, second.size);
+    swap(first.buffer, second.buffer);
+  }
 
-  
   Screen& operator=(const Screen& other) {
     if (this != &other) // only if this and other are differenc
       {
@@ -190,5 +195,29 @@ int main() {
     screen.print();
     timeStep++;
   }
+
+
+
+  // // would be nice to have some tests
+  // Screen screen2(3);
+  // Screen screen3(5);
+  // if (screen2.get_size() != 3) {
+  //   cout << "error (mark 0)" << endl;
+  //   abort();
+  // }
+  // 
+  // //Screen::swap(screen2, screen3);
+  // screen2.swap(screen3);
+  // if (screen2.get_size() != 5) {
+  //   cout << "error (mark 1)" << endl;
+  //   abort();
+  // }
+  // if (screen3.get_size() != 3) {
+  //   cout << "error (mark 2)" << endl;
+  //   abort();
+  // }
+    
+  
+  
 }
 
