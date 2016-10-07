@@ -17,6 +17,7 @@ public:
   void virtual move();
   friend std::istream& operator>>(std::istream& in, Particle& p);
   virtual ~Particle() {};
+  void repr();
 private:
   char symbol;
 protected:

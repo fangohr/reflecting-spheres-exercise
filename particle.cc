@@ -32,3 +32,11 @@ void Particle::move() {
 std::istream& operator>>(std::istream& in, Particle& p) {
   return in >> p.symbol >> p.position >> p.speed;
 }
+
+void Particle::repr() {
+  std::cout << "Particle("
+            << this->symbol  << ", "
+            << this->position << ", "
+            << this->speed << ")"
+            << std::endl;
+}
