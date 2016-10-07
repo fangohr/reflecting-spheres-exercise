@@ -9,7 +9,7 @@ class MagicParticle : public Particle {
 public:
   MagicParticle () : Particle() {};
   MagicParticle(char s, double p, double sp) : Particle(s, p, sp) {};
-  void move();
+  virtual void move();
 };
 
 #endif
