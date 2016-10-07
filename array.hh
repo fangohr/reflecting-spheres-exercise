@@ -1,7 +1,7 @@
 #ifndef Array_hh
 #define Array_hh
 
-#include "Particle.hh"
+#include "particle.hh"
 
 class Array {
 private:
