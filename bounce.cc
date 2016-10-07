@@ -20,28 +20,29 @@ int main() {
   
   std::vector<Particle*> particle;
   while (config) {
-    Particle *p = new Particle;
-    config >> *p;
+    char type;
+    config >> type;
     if (!config) break;
-    particle.push_back(p);
+    if (type == 'r') {           // real particle
+      Particle *p = new Particle;
+      config >> *p;
+      //p->repr();
+      particle.push_back(p);
+    }
+    else {
+      if (type == 'm') {         // magic particle
+        MagicParticle *p = new MagicParticle;
+        config >> *p;
+        particle.push_back(p);
+        //p->repr();
+      }
+      else {
+        std::cerr << "expect type r or m in first config file column"
+                  << std::endl;
+        return EXIT_FAILURE;
+      }
+    }
   }
-
-
- // load magic particles
- std::string filename_magic("config_magic.txt");
- std::ifstream config_magic(filename_magic.c_str());
- if (!config_magic) {
-   std::cerr << "Could not open file " << filename_magic << std::endl;
-   return EXIT_FAILURE;
- }
- 
- while (config_magic) {
-   MagicParticle *m = new MagicParticle;
-   config_magic >> *m;
-   if (!config_magic) break;
-   particle.push_back(m);
- }
-
 
   Screen screen(maxColumn + 1);
   
