@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "particle.hh"
+#include "magicparticle.hh"
 #include "screen.hh"
 // #include "array.hh"
 #include <vector>
@@ -25,6 +26,24 @@ int main() {
     if (!config) break;
     particle.push_back(p);
   }
+
+
+  // load magic particles
+  std::string filename_magic("config_magic.txt");
+  std::ifstream config_magic(filename_magic.c_str());
+  if (!config_magic) {
+    std::cerr << "Could not open file " << filename_magic << std::endl;
+    return EXIT_FAILURE;
+  }
+  
+  while (config_magic) {
+    //std::cout << "Here" << std::endl;
+    MagicParticle m;
+    config_magic >> m;
+    if (!config_magic) break;
+    particle.push_back(m);
+  }
+
 
   Screen screen(maxColumn + 1);
   
