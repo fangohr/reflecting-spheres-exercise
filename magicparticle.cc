@@ -5,7 +5,7 @@ void MagicParticle::move() {
   if (position >= maxColumn) {
     position = minColumn;
   } else if (position < minColumn) {
-    position = maxColumn-1;
+    position = maxColumn;
   }
 }
 
