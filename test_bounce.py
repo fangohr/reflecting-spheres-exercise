@@ -64,3 +64,7 @@ def test_output_is_nontrivial():
     
 
 
+def test_valgrind():
+    status, command_output = subprocess.getstatusoutput('make valgrind')
+    print(command_output)
+    assert status == 0
