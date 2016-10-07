@@ -14,7 +14,7 @@ public:
   Particle(char s, double p, double sp) : symbol(s), position(p), speed(sp) {}
   Particle& operator=(const Particle& other);
   void draw(Screen& screen) const;
-  void virtual move();
+  virtual void move() = 0;
   friend std::istream& operator>>(std::istream& in, Particle& p);
   virtual ~Particle() {}
   void repr();

@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "particle.hh"
+#include "realparticle.hh"
 #include "magicparticle.hh"
 #include "screen.hh"
 #include <vector>
@@ -24,7 +24,7 @@ int main() {
     config >> type;
     if (!config) break;
     if (type == 'r') {           // real particle
-      Particle *p = new Particle;
+      Particle *p = new RealParticle;
       config >> *p;
       //p->repr();
       particle.push_back(p);

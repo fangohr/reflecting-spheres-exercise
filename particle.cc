@@ -18,16 +18,6 @@ void Particle::draw(Screen& screen) const {
   screen[position] = symbol;
 }
 
-void Particle::move() {
-  position += speed;
-  if (position >= maxColumn) {
-    position = maxColumn;
-    speed = -speed;
-  } else if (position < minColumn) {
-    position = minColumn;
-    speed = -speed;
-  }
-}
 
 std::istream& operator>>(std::istream& in, Particle& p) {
   return in >> p.symbol >> p.position >> p.speed;
