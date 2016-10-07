@@ -7,6 +7,7 @@
 #include "screen.hh"
 #include "array.hh"
 
+
 int main() {
 
   std::string filename("config.txt");
@@ -16,7 +17,7 @@ int main() {
     return EXIT_FAILURE;
   }
   
-  Array particle;
+  Array<Particle> particle;
   while (config) {
     Particle p;
     config >> p;
