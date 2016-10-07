@@ -6,7 +6,6 @@
 #include "particle.hh"
 #include "magicparticle.hh"
 #include "screen.hh"
-// #include "array.hh"
 #include <vector>
 
 
@@ -37,7 +36,6 @@ int main() {
  }
  
  while (config_magic) {
-   //std::cout << "Here" << std::endl;
    MagicParticle *m = new MagicParticle;
    config_magic >> *m;
    if (!config_magic) break;
@@ -51,9 +49,6 @@ int main() {
   int const stopTime = 60;
   
   while (timeStep < stopTime) {
-    //std::cout << "timestep = " << timeStep;
-    //std::cout << "particle.size() = " << particle.size() << std::endl;
-    //std::cout << "particle[0] = " << particle[0]->position << std::endl;
     screen.clear();
     for (int p=0; p<particle.size(); ++p) {
       particle[p]->draw(screen);
