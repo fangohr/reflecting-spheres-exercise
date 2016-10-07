@@ -58,7 +58,7 @@ def test_output_is_nontrivial():
     assert n_x == 59
     n_start = command_output.count('*')
     print("number of * = {}".format(n_start))
-    assert n_start ==60
+    assert n_start == 58
 
     # x has one fewer, as it is overwritten by particle 2, which has symbol *
     
