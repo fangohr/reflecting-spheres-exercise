@@ -3,9 +3,9 @@
 #include <fstream>
 #include <iostream>
 
-#include "Particle.hh"
-#include "Screen.hh"
-#include "Array.hh"
+#include "particle.hh"
+#include "screen.hh"
+#include "array.hh"
 
 int main() {
 
