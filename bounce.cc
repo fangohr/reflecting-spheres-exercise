@@ -58,4 +58,9 @@ int main() {
     screen.print();
     timeStep++;
   }
+
+  // delete memory
+  for (int p=0; p<particle.size(); p++) {
+    delete particle[p];
+  };
 }
