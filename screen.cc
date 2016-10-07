@@ -3,7 +3,7 @@
 
 using std::cout; using std::endl;
 
-#include "Screen.hh"
+#include "screen.hh"
 
 Screen::Screen(const Screen& other) : buffer(new char[other.size]), size(other.size) {
   std::copy(other.buffer, other.buffer + other.size, this->buffer);

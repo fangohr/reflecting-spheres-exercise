@@ -1,5 +1,5 @@
 #include <algorithm>
-#include "Array.hh"
+#include "array.hh"
 
 Array::Array() : buffer(NULL), N(0) {}
 

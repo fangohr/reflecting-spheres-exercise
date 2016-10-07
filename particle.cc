@@ -1,5 +1,5 @@
-#include "Particle.hh"
-#include "Screen.hh"
+#include "particle.hh"
+#include "screen.hh"
 
 const int minColumn =  0;
 const int maxColumn = 80;
