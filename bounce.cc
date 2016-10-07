@@ -5,7 +5,8 @@
 
 #include "particle.hh"
 #include "screen.hh"
-#include "array.hh"
+// #include "array.hh"
+#include <vector>
 
 
 int main() {
@@ -17,7 +18,7 @@ int main() {
     return EXIT_FAILURE;
   }
   
-  Array<Particle> particle;
+  std::vector<Particle> particle;
   while (config) {
     Particle p;
     config >> p;
