@@ -35,7 +35,8 @@ LDFLAGS +=  # -L /usr/local/lib/SomeLibrary
 
 # 7.  Type 'make' on the command line.
 
-CPPFLAGS += -MD -MP
+CPPFLAGS += -MD -MP -g
+#CPPFLAGS += -g
 
 SOURCES := $(wildcard *.cc)
 
@@ -49,3 +50,6 @@ clean:
 
 test:
 	py.test -v 
+
+valgrind:
+	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --error-exitcode=3 ./bounce
