@@ -11,6 +11,6 @@ void MagicParticle::move() {
     position = maxColumn-1;
     //speed = -speed;
   }
-  std::cout << "Been in MagicParticle:::move()" << std::endl;
+  //std::cout << "Been in MagicParticle:::move()" << std::endl;
 }
 
