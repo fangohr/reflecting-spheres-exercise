@@ -21,17 +21,18 @@ int main() {
   std::vector<Particle*> particle;
   while (config) {
     char type;
+    Particle *p;
     config >> type;
     if (!config) break;
     if (type == 'r') {           // real particle
-      Particle *p = new RealParticle;
+      p = new RealParticle;
       config >> *p;
       //p->repr();
       particle.push_back(p);
     }
     else {
       if (type == 'm') {         // magic particle
-        MagicParticle *p = new MagicParticle;
+        p = new MagicParticle;
         config >> *p;
         particle.push_back(p);
         //p->repr();
@@ -41,6 +42,7 @@ int main() {
                   << std::endl;
         return EXIT_FAILURE;
       }
+      
     }
   }
 
@@ -60,7 +62,8 @@ int main() {
   }
 
   // delete memory
-  for (int p=0; p<particle.size(); p++) {
-    delete particle[p];
+  for (unsigned int p=0; p<particle.size(); p++) {
+     delete particle[p];
   };
+  
 }
