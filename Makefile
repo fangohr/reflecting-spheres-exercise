@@ -46,3 +46,6 @@ clean:
 	rm *.o *.d bounce
 
 -include $(SOURCES:%.cc=%.d)
+
+test:
+	py.test -v 
