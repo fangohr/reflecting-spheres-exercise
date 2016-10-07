@@ -24,3 +24,4 @@ before_install:
   - python3 -V
   - pip3 -V
   - pip3 install pytest
+  - valgrind --version
